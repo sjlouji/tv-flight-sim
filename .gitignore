@@ -1,0 +1,15 @@
+# Build outputs and downloads (recreate with scripts/build-jsbsim.sh and scripts/fetch-assets.sh)
+Vendor/.build-jsbsim/
+Vendor/.downloads/
+Vendor/JSBSim.xcframework/
+Vendor/jsbsim-data/
+FlightSim.xcodeproj/
+build/
+DerivedData/
+*.xcresult
+__pycache__/
+.DS_Store
+
+# Third-party agent skills (reinstall from skills-lock.json)
+.agents/
+.claude/

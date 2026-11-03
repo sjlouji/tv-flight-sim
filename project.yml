@@ -1,0 +1,80 @@
+name: FlightSim
+options:
+  bundleIdPrefix: com.joanlouji
+  deploymentTarget:
+    tvOS: "26.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    CLANG_CXX_LANGUAGE_STANDARD: c++17
+    CLANG_CXX_LIBRARY: libc++
+targets:
+  FlightSim:
+    type: application
+    platform: tvOS
+    sources:
+      - path: FlightSim
+        excludes:
+          - "Resources/**"
+      - path: FlightSim/Resources/Airports
+        type: folder
+        buildPhase: resources
+      - path: FlightSim/Resources/Textures
+        type: folder
+        buildPhase: resources
+      - path: FlightSim/Resources/CREDITS.txt
+        buildPhase: resources
+      - path: Vendor/jsbsim-data
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - framework: Vendor/JSBSim.xcframework
+        embed: false
+      - sdk: GameController.framework
+      - sdk: RealityKit.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.joanlouji.tvflightsim
+        PRODUCT_NAME: FlightSim
+        INFOPLIST_FILE: FlightSim/Support/Info.plist
+        SWIFT_OBJC_BRIDGING_HEADER: FlightSim/Support/FlightSim-Bridging-Header.h
+        ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+        TARGETED_DEVICE_FAMILY: "3"
+  FlightSimTests:
+    type: bundle.unit-test
+    platform: tvOS
+    sources:
+      - path: FlightSimTests
+    dependencies:
+      - target: FlightSim
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        BUNDLE_LOADER: $(TEST_HOST)
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/FlightSim.app/FlightSim
+  FlightSimUITests:
+    type: bundle.ui-testing
+    platform: tvOS
+    sources:
+      - path: FlightSimUITests
+    dependencies:
+      - target: FlightSim
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: FlightSim
+schemes:
+  FlightSim:
+    build:
+      targets:
+        FlightSim: all
+        FlightSimTests: [test]
+        FlightSimUITests: [test]
+    test:
+      targets:
+        - FlightSimTests
+        - FlightSimUITests
+      gatherCoverageData: false

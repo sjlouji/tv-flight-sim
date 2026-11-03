@@ -1,0 +1,7 @@
+Map data © OpenStreetMap contributors, available under the Open Database License (ODbL).
+Terrain: Mapzen Terrain Tiles on AWS Open Data (SRTM, GMTED2010, ETOPO1 and other sources).
+Airport list: OurAirports (ourairports.com), public domain.
+Surface textures: Asphalt033, Concrete034, Grass004 by ambientCG (ambientcg.com), CC0.
+Flight dynamics: JSBSim (LGPL-2.1). Aircraft flight models distributed with JSBSim: Boeing 737 (Dave Culp / Aeromatic),
+Boeing 747, Boeing 787-8 (Narendran Muraleedharan, Dwayne Gable, Nicky Ivy), Airbus A320, Lockheed C-130, Cessna 172P,
+DHC-6 Twin Otter (Erik Hofman), Bombardier Global 5000 (Aeromatic, Guilherme Lima da Silva), F-4N Phantom (Aeromatic).
